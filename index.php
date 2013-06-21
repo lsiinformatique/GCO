@@ -55,35 +55,40 @@ include ('inc/header.php');
             </div>
         </div> -->
         <div class="grid_10">
-            <div class="box round first">
-                <h2>
-                    Product Sales</h2>
-                <div class="block">
-                    <div id="chart1">
-                    </div>
-                </div>
-            </div>
             <div class="box round">
                 <h2>
-                    Figures</h2>
+                    Statistique</h2>
                 <div class="block">
                     <div class="stat-col">
-                        <span>Target</span>
+                        <span>Client</span>
+                        <?php
+                        $query_client = mysql_query("SELECT * FROM client");
+                        $donnees_client = mysql_fetch_row($query_client);
+                        ?>
                         <p class="purple">
-                            70,000</p>
+                            <?php if($donnees_client!=0){echo $donnees_client;}else{echo "0";} ?></p>
                     </div>
                     <div class="stat-col">
-                        <span>Last Month Sales</span>
+                        <span>Intervention en cours</span>
+                        <?php
+                        $query_inter_cours = mysql_query("SELECT * FROM intervention WHERE etat=1");
+                        $donnees_inter_cours = mysql_fetch_row($query_inter_cours);
+                        ?>
                         <p class="yellow">
-                            32,729</p>
+                            <?php if($donnees_inter_cours!=0){echo $donnees_inter_cours;}else{echo "0";} ?>
+                        </p>
                     </div>
                     <div class="stat-col">
-                        <span>Current Month Sales</span>
+                        <span>Intervention</span>
+                        <?php
+                        $query_inter = mysql_query("SELECT * FROM intervention");
+                        $donnees_inter = mysql_fetch_row($query_inter);
+                        ?>
                         <p class="green">
-                            63,829</p>
+                            <?php if($donnees_inter!=0){echo $donnees_inter;}else{echo "0";} ?></p>
                     </div>
                     <div class="stat-col">
-                        <span>Change</span>
+                        <span>Contrat</span>
                         <p class="blue">
                             99.9%</p>
                     </div>

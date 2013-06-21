@@ -1,8 +1,19 @@
+<?php
+session_start();  
+if (!isset($_SESSION['login'])) { 
+   header ('Location: connexion.php'); 
+   exit();  
+}  
+?>
+<?php
+include ('config.php');
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>Dashboard | BlueWhale Admin</title>
+    <title>GCO</title>
     <link rel="stylesheet" type="text/css" href="./css/reset.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="./css/text.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="./css/grid.css" media="screen" />
@@ -46,6 +57,19 @@
             <div id="branding">
                 <div class="floatleft">
                     <h1><font color=white>LSI INFORMATIQUE - GCO</font></h1></div>
+                 <div class="floatright">
+                    <div class="floatleft">
+                        <img src="img/img-profile.jpg" alt="Profile Pic" /></div>
+                    <div class="floatleft marginleft10">
+                        <ul class="inline-ul floatleft">
+                            <li>Bienvenue <?php echo $_SESSION['login']; ?></li>
+                            <li><a href="#">Config</a></li>
+                            <li><a href="deconnexion.php">Logout</a></li>
+                        </ul>
+                        <br />
+                        <span class="small grey">Last Login: 3 hours ago</span>
+                    </div>
+                </div>
                 <div class="clear">
                 </div>
             </div>
