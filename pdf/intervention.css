@@ -1,0 +1,91 @@
+#intervention{
+	font-family: Arial, comic;
+	font-size: 18px;
+	font-weight: bolder;
+}
+#entete-left{
+	text-align: left;
+}
+#entete-right{
+position: relative;
+top:-85px;
+left:450px;
+
+}
+.titre_doc{
+
+	text-decoration: underline 2px;
+	font-size: 25px;
+	position: relative;
+	top:45px;
+	right:150px;
+
+}
+#bloc_client{
+	font-size: 12px;
+	margin-top: 30px;
+	width: 100%;
+}
+.bloc_client_left{
+	border: solid 4px;
+	width:390px;
+}
+.bloc_client_right{
+
+	position: relative;
+	top: -130px;
+	left:400px;
+	width: 340px;
+	height:123px;
+	border:solid 4px;
+}
+#bloc_telephone{
+
+	font-size: 15px;
+	margin-top: 25px;
+	border:solid;
+	height:105px;
+	width: 340px;
+
+}
+.bloc_telephone_left{
+	font-weight: bold;
+}
+.bloc_telephone_right{
+	position: relative;
+	top: -103px;
+	left: 400px;
+}
+td.gras{
+	font-weight: bolder;
+}
+
+#bloc_probleme{
+
+	font-size: 15px;
+	width:740px;
+	height:150px;
+	border: solid;
+	margin-top: 15px;
+	margin-bottom: 10px;
+	padding:5px 5px;
+}
+#bloc_solution{
+
+	font-size: 15px;
+	width:740px;
+	height:150px;
+	border: solid;
+	margin-top: 15px;
+	margin-bottom: 10px;
+	padding: 5px 5px;
+}
+#condition{
+	font-size: 10px;
+}
+#signature{
+
+	position: relative;
+	left:440px;
+	top: 15px;
+}

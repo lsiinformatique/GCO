@@ -1,7 +1,7 @@
 ﻿<?php
 include ('inc/header.php');
 ?>
-<!--         <div class="grid_2">
+<!--          <div class="grid_2">
             <div class="box sidemenu">
                 <div class="block" id="section-menu">
                     <ul class="section menu">
@@ -53,112 +53,41 @@ include ('inc/header.php');
                     </ul>
                 </div>
             </div>
-        </div> -->
+        </div> --> 
+
         <div class="grid_10">
-            <div class="box round">
-                <h2>
-                    Statistique</h2>
-                <div class="block">
-                    <div class="stat-col">
-                        <span>Client</span>
-                        <?php
-                        $query_client = mysql_query("SELECT * FROM client");
-                        $donnees_client = mysql_fetch_row($query_client);
-                        ?>
-                        <p class="purple">
-                            <?php if($donnees_client!=0){echo $donnees_client;}else{echo "0";} ?></p>
-                    </div>
-                    <div class="stat-col">
-                        <span>Intervention en cours</span>
-                        <?php
-                        $query_inter_cours = mysql_query("SELECT * FROM intervention WHERE etat=1");
-                        $donnees_inter_cours = mysql_fetch_row($query_inter_cours);
-                        ?>
-                        <p class="yellow">
-                            <?php if($donnees_inter_cours!=0){echo $donnees_inter_cours;}else{echo "0";} ?>
-                        </p>
-                    </div>
-                    <div class="stat-col">
-                        <span>Intervention</span>
-                        <?php
-                        $query_inter = mysql_query("SELECT * FROM intervention");
-                        $donnees_inter = mysql_fetch_row($query_inter);
-                        ?>
-                        <p class="green">
-                            <?php if($donnees_inter!=0){echo $donnees_inter;}else{echo "0";} ?></p>
-                    </div>
-                    <div class="stat-col">
-                        <span>Contrat</span>
-                        <p class="blue">
-                            99.9%</p>
-                    </div>
-                    <div class="stat-col">
-                        <span>Difference</span>
-                        <p class="red">
-                            693.00</p>
-                    </div>
-                    <div class="stat-col">
-                        <span>Stats with Icon</span>
-                        <p class="purple">
-                            <img src="img/icon-direction.png" alt="" />&nbsp;65,000</p>
-                    </div>
-                    <div class="stat-col last">
-                        <span>Total</span>
-                        <p class="darkblue">
-                            70,000</p>
-                    </div>
-                    <div class="clear">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="grid_5">
-            <div class="box round">
-                <h2>
-                    Column on Left</h2>
-                <div class="block">
-                    <p class="start">
-                        <img src="img/horizontal.jpg" alt="Ginger" class="left" />Lorem ipsum dolor sit
-                        amet, consectetur <a href="">adipisicing</a> elit, sed do eiusmod tempor incididunt
-                        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                        ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur..</p>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                        deserunt mollit anim id est laborum.</p>
-                </div>
-            </div>
-        </div>
-        <div class="grid_5">
-            <div class="box round">
-                <h2>
-                    Right Column</h2>
-                <div class="block">
-                    <p class="start">
-                        <img src="img/vertical.jpg" alt="Ginger" class="right" />Lorem Ipsum is simply dummy
-                        text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-                        standard dummy text ever since the 1500s, when an unknown printer took a galley
-                        of type and scrambled it to make a type specimen book. It has survived not only
-                        five centuries, but also the leap into electronic typesetting, remaining essentially
-                        unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
-                        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
-                        PageMaker including versions of Lorem Ipsum.</p>
-                    <p>
-                        It is a long established fact that a reader will be distracted by the readable content
-                        of a page when looking at its layout. The point of using Lorem Ipsum is that it
-                        has a more-or-less normal distribution of letters, as opposed to using 'Content
-                        here, content here', making it look like readable English. Many desktop publishing
-                        packages and web page editors now use Lorem Ipsum as their default model text, and
-                        a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various
-                        versions have evolved over the years, sometimes by accident, sometimes on purpose
-                        (injected humour and the like).</p>
-                </div>
-            </div>
-        </div>
+        	<div class="box round">
+        		<h2>Liste des Intervention en cours</h2>
+        			<div class="block">
+        				<table class="inter-index" width="100%" border="2">
+        					<tr>
+        						<th>Id</th>
+        						<th>Nom client</th>
+        						<th>Numéro de Téléphone 1</th>
+        						<th>Numéro de Téléphone 2</th>
+        						<th>Marque du Téléphone</th>
+        						<th>Serie du Téléphone</th>
+        						<th>Action</th>
+        					</tr>
+        					<tr>
+        					<?php 
+        						$query_inter2 = mysql_query("SELECT * FROM intervention, client WHERE etat=1");
+        						while($donnees_inter2 = mysql_fetch_array($query_inter2)){
+        					?>
+        						<td><?php echo $donnees_inter2['idintervention']; ?></td>
+        						<td><?php echo $donnees_inter2['nom']; ?> <?php echo $donnees_inter2['prenom']; ?></td>
+        						<td><?php echo $donnees_inter2['telephone']; ?></td>
+        						<td><?php echo $donnees_inter2['telephone2']; ?></td>
+        						<td><?php echo $donnees_inter2['marque_telephone']; ?></td>
+        						<td><?php echo $donnees_inter2['serie_telephone']; ?></td>
+        						<td><a href="core/intervention/affiche_intervention.php?idintervention=<?php echo $donnees_inter2['idintervention']; ?>">Afficher l'intervention</a></td>
+        					<?php } ?>
+        					</tr>
+        				</table>
+        				<div class="clear"></div>
+        			</div>
+        		</div>
+        	</div>
         <div class="clear">
         </div>
     </div>
@@ -166,7 +95,7 @@ include ('inc/header.php');
     </div>
     <div id="site_info">
         <p>
-            Copyright <a href="#">BlueWhale Admin</a>. All Rights Reserved.
+            Copyright &copy; 2013 GCO telephonique. Tous Droits Réservé
         </p>
     </div>
 </body>

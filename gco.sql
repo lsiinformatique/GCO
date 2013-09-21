@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.1
+-- version 4.0.4
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Ven 21 Juin 2013 à 23:02
--- Version du serveur: 5.5.24-log
--- Version de PHP: 5.3.13
+-- Généré le: Sam 21 Septembre 2013 à 16:32
+-- Version du serveur: 5.6.12-log
+-- Version de PHP: 5.4.12
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -19,6 +19,35 @@ SET time_zone = "+00:00";
 --
 -- Base de données: `gco`
 --
+CREATE DATABASE IF NOT EXISTS `gco` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `gco`;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `agence`
+--
+
+CREATE TABLE IF NOT EXISTS `agence` (
+  `idagence` int(11) NOT NULL AUTO_INCREMENT,
+  `raison_social` varchar(255) NOT NULL,
+  `adresse1` varchar(255) NOT NULL,
+  `adresse2` varchar(255) NOT NULL,
+  `cp` varchar(255) NOT NULL,
+  `ville` varchar(255) NOT NULL,
+  `telephone` varchar(255) NOT NULL,
+  `siret` varchar(255) NOT NULL,
+  `ape` varchar(255) NOT NULL,
+  `num_tva` varchar(255) NOT NULL,
+  PRIMARY KEY (`idagence`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `agence`
+--
+
+INSERT INTO `agence` (`idagence`, `raison_social`, `adresse1`, `adresse2`, `cp`, `ville`, `telephone`, `siret`, `ape`, `num_tva`) VALUES
+(1, 'LSI INFORMATIQUE', '35 Avenue de Bretagne', '', '85100', 'LES SABLES D OLONNE', '02 51 23 24 24', '753 865 229 00011', '4741Z', 'FR56 753 865 229');
 
 -- --------------------------------------------------------
 
@@ -37,8 +66,16 @@ CREATE TABLE IF NOT EXISTS `client` (
   `telephone` varchar(255) DEFAULT NULL,
   `mail` varchar(255) DEFAULT NULL,
   `portable` varchar(255) DEFAULT NULL,
+  `telephone2` varchar(255) NOT NULL,
   PRIMARY KEY (`idclient`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `client`
+--
+
+INSERT INTO `client` (`idclient`, `nom`, `prenom`, `adresse1`, `adresse2`, `cp`, `ville`, `telephone`, `mail`, `portable`, `telephone2`) VALUES
+(1, 'MOCKELYN', 'Maxime', '3 Rue du Grand Coin', NULL, '85100', 'LES SABLES D OLONNE', '02 51 95 25 95', 'maxservea@orange.fr', '06 33 13 43 30\r\n', '');
 
 -- --------------------------------------------------------
 
@@ -99,24 +136,31 @@ CREATE TABLE IF NOT EXISTS `intervention` (
   `idintervention` int(11) NOT NULL AUTO_INCREMENT,
   `idclient` int(11) DEFAULT NULL,
   `etat` int(11) DEFAULT NULL,
-  `date` date DEFAULT NULL,
+  `date` varchar(255) DEFAULT NULL,
   `materiel` varchar(255) DEFAULT NULL,
   `desc_travail` text,
   `travail_effectuer` longtext,
-  `idtechnicien` int(11) DEFAULT NULL,
-  `lieu` int(11) DEFAULT NULL,
-  `heure_debut` varchar(255) DEFAULT NULL,
-  `heure_fin` varchar(255) DEFAULT NULL,
-  `offert` int(11) DEFAULT NULL,
-  `reglement` int(11) DEFAULT NULL,
   `date_close` date DEFAULT NULL,
+  `marque_telephone` varchar(255) NOT NULL,
+  `serie_telephone` varchar(255) NOT NULL,
+  `imei` varchar(255) NOT NULL,
+  `batterie` int(1) NOT NULL,
+  `carte_sim` int(1) NOT NULL,
+  `chargeur` int(1) NOT NULL,
+  `tel_demarre` int(1) NOT NULL,
+  `code_sim` varchar(255) NOT NULL,
+  `code_util` varchar(255) NOT NULL,
   PRIMARY KEY (`idintervention`),
   KEY `fk_intervention_client_idx` (`idclient`),
-  KEY `fk_intervention_etat_intervention1_idx` (`etat`),
-  KEY `fk_intervention_technicien1_idx` (`idtechnicien`),
-  KEY `fk_intervention_lieu_intervention1_idx` (`lieu`),
-  KEY `fk_intervention_reglement1_idx` (`reglement`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  KEY `fk_intervention_etat_intervention1_idx` (`etat`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `intervention`
+--
+
+INSERT INTO `intervention` (`idintervention`, `idclient`, `etat`, `date`, `materiel`, `desc_travail`, `travail_effectuer`, `date_close`, `marque_telephone`, `serie_telephone`, `imei`, `batterie`, `carte_sim`, `chargeur`, `tel_demarre`, `code_sim`, `code_util`) VALUES
+(1, 1, 1, '2013-09-20', 'TELEPHONE', 'DEBLOCAGE TELEPHONE', NULL, NULL, 'SAMSUNG', 'GT-N7105 GALAXY NOTE 2', '354792054834449\r\n', 1, 1, 0, 1, '0000', 'non');
 
 -- --------------------------------------------------------
 
